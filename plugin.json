@@ -1,0 +1,14 @@
+{
+    "plugin": {
+        "name": "bn-perso",
+        "description": "Personnal BN scripts",
+        "type": ["core", "architecture", "binaryview", "ui"],
+        "version": "0.0.1",
+        "author": "balayette",
+        "minimumBinaryNinjaVersion": {
+            "dev": "1.0",
+            "release": "1.0"
+        }
+    }
+}
+
