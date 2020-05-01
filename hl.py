@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from binaryninja import *
+import re
 
 col = HighlightStandardColor.OrangeHighlightColor
 
@@ -13,6 +14,7 @@ def do(bv, hc):
         seen = {}
 
         for l in f.readlines():
+            l = l.split('|')[0]
             try:
                 addr = int(l, 16)
             except:
@@ -38,7 +40,8 @@ def do(bv, hc):
 
                 if hc:
                     curr = fun.get_comment_at(addr)
-                    fun.set_comment_at(addr, f"{curr} [hitcount: {seen[addr]}]")
+                    curr = re.sub(r'\[hitcount: [0-9]+]', '[hitcount: {seen[addr]}]', curr)
+                    fun.set_comment_at(addr, curr)
 
 def do_hl(bv, _):
     do(bv, False)
