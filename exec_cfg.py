@@ -89,7 +89,7 @@ def simplify_bbs(trace, bbs):
     simple = {}
     removed = {}
 
-    force_end = set(["ret", "call"])
+    force_end = set(["ret"])
 
     for i in range(len(trace)):
         addr = trace[i]
